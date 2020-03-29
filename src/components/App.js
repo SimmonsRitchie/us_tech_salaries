@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import * as d3 from 'd3'
 import _ from 'lodash'
 import Preloader from "./Preloader"
-import { loadAllData} from "./DataHandling"
+import { loadAllData} from "../DataHandling"
 
 class App extends Component {
   state = {
