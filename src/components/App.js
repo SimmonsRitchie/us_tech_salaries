@@ -4,16 +4,17 @@ import _ from "lodash";
 import Preloader from "./Preloader";
 import { loadAllData } from "../DataHandling";
 import CountyMap from "./CountyMap";
+import Histogram from "./Histogram";
 
 class App extends Component {
   state = {
     techSalaries: [],
     medianIncomes: [],
-    countyNames: []
+    countyNames: [],
   };
 
   componentDidMount() {
-    loadAllData(data => this.setState(data));
+    loadAllData((data) => this.setState(data));
   }
 
   countyValue(county, techSalariesMap) {
@@ -24,11 +25,11 @@ class App extends Component {
       return null;
     }
 
-    const median = d3.median(salaries, d => d.base_salary);
+    const median = d3.median(salaries, (d) => d.base_salary);
 
     return {
       countyID: county.id,
-      value: median - medianHousehold.medianIncome
+      value: median - medianHousehold.medianIncome,
     };
   }
 
@@ -41,8 +42,8 @@ class App extends Component {
     const filteredSalaries = techSalaries,
       filteredSalariesMap = _.groupBy(filteredSalaries, "countyID"),
       countyValues = countyNames
-        .map(county => this.countyValue(county, filteredSalariesMap))
-        .filter(d => !_.isNull(d));
+        .map((county) => this.countyValue(county, filteredSalariesMap))
+        .filter((d) => !_.isNull(d));
 
     let zoom = null;
 
@@ -58,6 +59,18 @@ class App extends Component {
             width={500}
             height={500}
             zoom={zoom}
+          />
+          <Histogram
+            bins={10}
+            width={500}
+            height={500}
+            x={500}
+            y={10}
+            data={filteredSalaries}
+            axisMargin={83}
+            bottomMargin={5}
+            // we use a func because easier to reuse component
+            value={(d) => d.base_salary}
           />
         </svg>
       </div>
