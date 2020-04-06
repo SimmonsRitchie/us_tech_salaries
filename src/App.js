@@ -1,16 +1,22 @@
 import React, { Component } from "react";
 import * as d3 from "d3";
 import _ from "lodash";
-import Preloader from "./Preloader";
-import { loadAllData } from "../DataHandling";
-import CountyMap from "./CountyMap";
-import Histogram from "./Histogram";
+import Preloader from "./components/Preloader";
+import { loadAllData } from "./DataHandling";
+import CountyMap from "./components/CountyMap";
+import Histogram from "./components/Histogram";
+import { Title } from "./components/Meta";
 
 class App extends Component {
   state = {
     techSalaries: [],
     medianIncomes: [],
     countyNames: [],
+    filteredBy: {
+      USstate: "*",
+      year: "*",
+      jobTitle: "*",
+    },
   };
 
   componentDidMount() {
@@ -34,7 +40,13 @@ class App extends Component {
   }
 
   render() {
-    const { techSalaries, countyNames, usTopoJson, USstateNames } = this.state;
+    const {
+      techSalaries,
+      countyNames,
+      usTopoJson,
+      USstateNames,
+      filteredBy,
+    } = this.state;
     if (techSalaries.length < 1) {
       return <Preloader />;
     }
@@ -49,6 +61,7 @@ class App extends Component {
 
     return (
       <div className="App container">
+        <Title data={filteredSalaries} filteredBy={filteredBy} />
         <svg width="1100" height="500">
           <CountyMap
             usTopoJson={usTopoJson}
