@@ -1,8 +1,8 @@
-### US Tech Salaries Data Viz
+## US Tech Salaries Data Viz
 
 A data visualization on US tech salaries built as part of Swizec Teller's D3 and React tutorial series.
 
-## Available Scripts
+### Available Scripts
 
 In the project directory, you can run:
 
