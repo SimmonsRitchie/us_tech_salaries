@@ -1,8 +1,6 @@
-### React-D3 boilerplate playground
+### US Tech Salaries Data Viz
 
-A simple boilerplate for messing around with React and D3. It includes the Bulma CSS framework and styled components.
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A data visualization on US tech salaries built as part of Swizec Teller's D3 and React tutorial series.
 
 ## Available Scripts
 
