@@ -10,7 +10,7 @@
     "bootstrap": "^4.4.1",
     "d3": "^5.15.0",
     "lodash": "^4.17.15",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
